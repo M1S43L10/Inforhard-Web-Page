@@ -21,30 +21,32 @@ if (isIndex) {
 
   // 🔽 Auto-scroll suave luego del loader
   window.addEventListener("load", () => {
-    const yaVisitado = localStorage.getItem("visitado");
+    const hoy = new Date().toISOString().split("T")[0]; // ej: "2025-07-14"
+    const ultimaVisita = localStorage.getItem("ultimaVisita");
 
-    // Si nunca entró antes, hacemos scroll automático
-    if (!yaVisitado) {
-        setTimeout(() => {
+    if (ultimaVisita !== hoy) {
+      // 🟢 Primera visita del día: ejecutar efecto
+      setTimeout(() => {
         const loader = document.getElementById("loader");
 
         const waitForLoader = setInterval(() => {
-            const oculto = loader?.classList.contains("oculto") || loader?.style.display === "none";
-            if (oculto || !loader) {
+          const oculto = loader?.classList.contains("oculto") || loader?.style.display === "none";
+          if (oculto || !loader) {
             clearInterval(waitForLoader);
 
+            // Scroll automático
             setTimeout(() => {
-                window.scrollBy({ top: 65, behavior: "smooth" });
+              window.scrollBy({ top: 65, behavior: "smooth" });
             }, 500);
 
-            // ✅ Marcamos como ya visitado
-            localStorage.setItem("visitado", "true");
-            }
+            // 🔐 Guardar la fecha de visita de hoy
+            localStorage.setItem("ultimaVisita", hoy);
+          }
         }, 100);
-        }, 300);
+      }, 300);
     } else {
-        // Si ya visitó, aseguramos que el navbar se muestre
-        document.body.classList.add("scrolled");
+      // 🔁 Ya entró hoy → mostrar navbar directamente
+      document.body.classList.add("scrolled");
     }
   });
 } else {

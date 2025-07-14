@@ -7,6 +7,23 @@
   --blanco: #FFFFFF;
 }
 
+main {
+  margin-top: 0 !important;
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
 html {
   scroll-behavior: smooth;
 }
@@ -163,20 +180,21 @@ body.scrolled .navbar-ocultable {
   pointer-events: auto;
 }
 
-
-/* Hero con fondo a pantalla completa */
-/* HERO */
-#hero-inforhard-bg {
-  height: 100vh;
+#hero-inforhard-img {
   width: 100%;
-  background-image: url("../assets/tarjeta_personal.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #0c7439;
+  height: auto;
   display: flex;
-  align-items: center;
   justify-content: center;
-  position: relative;
-  z-index: 1;
+  align-items: center;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  background-color: #0c7439; /* como fallback si la imagen tarda */
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
