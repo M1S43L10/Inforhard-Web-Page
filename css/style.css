@@ -7,6 +7,11 @@
   --blanco: #FFFFFF;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 .loader-borde {
   position: fixed;
   top: 0; left: 0;
@@ -122,6 +127,56 @@ h2 {
   color: var(--verde-principal);
 }
 
+#hero-inforhard {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: #0c7439; /* backup color de fondo */
+  z-index: 1;
+}
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.navbar-ocultable {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+body:not(.scrolled) .navbar-ocultable {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+body.scrolled .navbar-ocultable {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 
-
+/* Hero con fondo a pantalla completa */
+/* HERO */
+#hero-inforhard-bg {
+  height: 100vh;
+  width: 100%;
+  background-image: url("../assets/tarjeta_personal.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #0c7439;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}

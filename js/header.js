@@ -38,13 +38,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      // 🔹 Corregir el link del logo que debe ir a index.html
+      // Corregir logo
       const logo = temp.querySelector(".navbar-brand");
       if (logo) {
         logo.setAttribute("href", rutaBase + "index.html");
       }
 
-      // Insertar finalmente en el header
+      // ✅ Aplicar clase para ocultar el navbar dinámicamente
+      const navbar = temp.querySelector("nav.navbar");
+      if (navbar) {
+        const isIndex = location.pathname.endsWith("index.html") || location.pathname === "/" || location.pathname === "/index.html";
+        if (isIndex) {
+          navbar.classList.add("navbar-ocultable");
+        }
+      }
+
+
+      // Insertar contenido final
       headerElement.innerHTML = temp.innerHTML;
     })
     .catch(error => {
